@@ -1,385 +1,200 @@
-<!DOCTYPE HTML>
-<!--
-	Prologue by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Leading Edge Sailing</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Leading Edge Sailing -  Coming Soon</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="This is site of Leading Edge.">
+	<meta name="keywords" content="leadingedge, sailing, sailboats, Newport, Houston">
+    <meta name="robots" content="index, follow">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139038123-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-		<!-- Header -->
-			<div id="header">
+  gtag('config', 'UA-139038123-1');
+</script>
+<!--===============================================================================================-->
+<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2257075557684310');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2257075557684310&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+<!--===============================================================================================-->
+<!-- Twitter universal website tag code -->
+<script>
+!function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
+a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+// Insert Twitter Pixel ID and Standard Event data below
+twq('init','o1quy');
+twq('track','PageView');
+</script>
+<!-- End Twitter universal website tag code -->
+<!--===============================================================================================-->
+<!--  Bing universal website tag code -->
+<script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"18003493"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script>
+<!--===============================================================================================-->
+<!-- For Form -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
 
-				<div class="top">
+            $("#submit").click(function(e) {
+                e.preventDefault();
 
-					<!-- Logo -->
-						<div id="logo">
-							<span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
-							<h1 id="title">J/109</h1>
-							<p>For Sale</p>
-						</div>
+                var name = $("#name").val(),
+                    email = $("#email").val(),
+                    phone = $("#phone").val(),
+                    wsource = $("#wsource").val(),
+                    desc = $("#desc").val();
 
-					<!-- Nav -->
-						<nav id="nav">
-							<ul>
-								<li><a href="#top" id="top-link"><span class="icon solid fa-home">Home</span></a></li>
-								<li><a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th">For Sale</span></a></li>
-								<li><a href="#about" id="about-link"><span class="icon solid fa-user">Specs</span></a></li>
-								<li><a href="#contact" id="contact-link"><span class="icon solid fa-envelope">Contact</span></a></li>
-							</ul>
-						</nav>
+                $.ajax({
+                    type: "POST",
+                    url: 'https://6632bs8ve0.execute-api.us-east-1.amazonaws.com/TestAPI/contact-us',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        'name': name,
+                        'phone':phone,
+                        'email': email,
+                        'desc': desc,
+                        'wsource': "www.leadingedgesailing.com - ContactForm"
+                    }),
+                    success: function(res){
+                        $('#form-response').text('Thank You Message Sent.');
+                        
+					
+                    },
+                    error: function(){
+                        $('#form-response').text('Error.');
+                    }
+                });
 
-				</div>
+            })
 
-				<div class="bottom">
-
-					<!-- Social Icons -->
-						
-
-				</div>
-
-			</div>
-
-		<!-- Main -->
-			<div id="main">
-
-				<!-- Intro -->
-					<section id="top" class="one dark cover">
-						<div class="container">
-
-							<header>
-								<!---<h2 class="alt"><font color="#00000">Hi! I'm <strong>Prologue</strong>, a free responsive<br />
-								site template designed by.</font></h2>
-								--->
-							</header>
-
-							<footer>
-							<!---<br><br>
-								<a href="#portfolio" class="button scrolly">Mana Aliquam</a>--->
-							</footer>
-
-						</div>
-					</section>
-
-				<!-- Portfolio -->
-					<section id="portfolio" class="two">
-						<div class="container">
-
-							<header>
-								<h2>J/109 For Sale</h2>
-							</header>
-
-							<h3>Introducing the J/109, a true masterpiece of sailing design and performance that is now available for sale. 
-							This sleek and elegant 35-foot cruiser/racer is a testament to J/Boats' commitment to delivering both exhilarating 
-							racing capabilities and comfortable cruising experiences. With its advanced hull shape and modern rigging, the J/109 
-							boasts impressive speed and agility, making it a favorite choice for competitive sailors. Yet, it also offers a spacious 
-							and well-appointed interior, accommodating up to six people comfortably for extended journeys. Whether you're seeking to 
-							conquer the racecourse or embark on memorable coastal adventures, this J/109 presents an incredible opportunity for sailing 
-							enthusiasts who value both speed and comfort. Don't miss your chance to own a vessel that perfectly balances performance 
-							and relaxation – the J/109 is ready to provide countless hours of sailing pleasure to its next fortunate owner.</h3><br>
-<div class="col-lg-5 col-lg-offset-1 col-md-6 wow fadeInRight delay-04s">
-            <div class="video-responsive">
-    <iframe width="420" height="315" src="https://www.youtube.com/embed/AnZbqUa1z2s" frameborder="0" allowfullscreen ></iframe>
+        });
+    </script> 
+    <style>.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+</style>
+  <!--===============================================================================================-->  
+</head>
+<body>
+	
 			
-               </div> <br>
-							<div class="row">
-								<div class="col-4 col-12-mobile">
-									<article class="item">
-										<a  class="image fit"><img src="images/pic02.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a  class="image fit"><img src="images/pic03.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-								</div>
-								<div class="col-4 col-12-mobile">
-									<article class="item">
-										<a  class="image fit"><img src="images/pic04.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a  class="image fit"><img src="images/pic05.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-								</div>
-								<div class="col-4 col-12-mobile">
-									<article class="item">
-										<a  class="image fit"><img src="images/pic06.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a  class="image fit"><img src="images/pic07.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-								</div>
-							</div>
-							<br>
-						<!---New-->
-						<div class="row">
-								<div class="col-4 col-12-mobile">
-									<article class="item">
-										<a  class="image fit"><img src="images/pic02a.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a  class="image fit"><img src="images/pic03a.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-								</div>
-								<div class="col-4 col-12-mobile">
-									<article class="item">
-										<a  class="image fit"><img src="images/pic04a.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a  class="image fit"><img src="images/pic05a.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-								</div>
-								<div class="col-4 col-12-mobile">
-									<article class="item">
-										<a  class="image fit"><img src="images/pic06a.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a  class="image fit"><img src="images/pic07a.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-								</div>
-							</div>
-							<br>
-								<!---New-->
-						<div class="row">
-								<div class="col-4 col-12-mobile">
-									<article class="item">
-										<a  class="image fit"><img src="images/pic02b.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a  class="image fit"><img src="images/pic03b.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-								</div>
-								<div class="col-4 col-12-mobile">
-									<article class="item">
-										<a  class="image fit"><img src="images/pic04b.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a  class="image fit"><img src="images/pic05b.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-								</div>
-								<div class="col-4 col-12-mobile">
-									<article class="item">
-										<a  class="image fit"><img src="images/pic06b.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a  class="image fit"><img src="images/pic07b.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-								</div>
-							</div>
-							<br>
-								<!---New-->
-						<div class="row">
-								<div class="col-4 col-12-mobile">
-									<article class="item">
-										<a  class="image fit"><img src="images/pic02c.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a  class="image fit"><img src="images/pic03c.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-								</div>
-								<div class="col-4 col-12-mobile">
-									<article class="item">
-										<a  class="image fit"><img src="images/pic04c.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a  class="image fit"><img src="images/pic05c.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-								</div>
-								<div class="col-4 col-12-mobile">
-									<article class="item">
-										<a  class="image fit"><img src="images/pic06c.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a  class="image fit"><img src="images/pic07c.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-								</div>
-							</div>
-							<br>
-							<!---New-->
-						<div class="row">
-								<div class="col-4 col-12-mobile">
-									<article class="item">
-										<a  class="image fit"><img src="images/pic02d.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a  class="image fit"><img src="images/pic03d.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-								</div>
-								<div class="col-4 col-12-mobile">
-									<article class="item">
-										<a  class="image fit"><img src="images/pic04d.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a  class="image fit"><img src="images/pic05d.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-								</div>
-								<div class="col-4 col-12-mobile">
-									<article class="item">
-										<a  class="image fit"><img src="images/pic06d.jpg" alt="" /></a>
-										<header>
-											<h3>East Coast Championship 2019 and 2022</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a  class="image fit"><img src="images/pic07d.jpg" alt="" /></a>
-										<header>
-											<h3>J/109</h3>
-										</header>
-									</article>
-								</div>
-							</div>
-						</div>
-					</section>
 
-				<!-- About Me -->
-					<section id="about" class="three">
-						<div class="container">
+	<div class="flex-w flex-str size1 overlay1">
+		<div class="flex-w flex-col-sb wsize1 bg0 p-l-65 p-t-37 p-b-50 p-r-80 respon1">
+			<div class="wrappic1">
+				<a href="#">
+					<img src="images/icons/logo.png" alt="IMG">
+				</a>
+			</div>		
+	
+			<div class="w-full flex-c-m p-t-80 p-b-90">
+				<div class="wsize2">
+					<h3 class="l1-txt1 p-b-34 respon3">
+						Coming Soon
+					</h3>
 
-							<header>
-							
-								<h2>SPECS</h2>
-							</header>
+					<p class="m2-txt1 p-b-46">
+						Put your email in for updates
+					</p>
 
-							<a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a>
-
-							<ul>
-<p><b>Leading Edge 2003 J/109</b><br />Located in Newport<br />
-<ul>$135,000</ul>
-Outstanding Race History - Not only in J/109 class but in the ORC and PHRF racing classes<br />Extensive sail inventory - Almost new 2022 set of UK class sails, also 150% genoa, 2 carbon fiber jibs, and 3 spinnakers<br />B&amp;G instruments 2021 with autopilot<br />Air conditioning and heating</p>
-</ul>
-<ul>*Leading Edge name not included<br>
-</ul>
-
-
-						</div>
-					</section>
-
-				<!-- Contact -->
-					<section id="contact" class="four">
-						<div class="container">
-
-							<header>
-								<h2>Contact</h2>
-							</header>
-
-							<p>Contact the Leading Edge Race Team for more information:</p>
-							<p><a href="tel:+14013142448"> +1 401-314-2448</a></p>
-							<p><a href="mailto:J109@LeadingEdgeSailing.com">J109@LeadingEdgeSailing.com</a></p>
-							
-
-							
-
-						</div>
-					</section>
-
+					<div class="form-style-2">
+ 					<div class="form-style-2-heading">Provide your information</div>
+	
+					<input type="text" id="email" placeholder="Enter email here   *" class="form-control" /><span class="required"><class="input-field"><br/><br/>
+					
+					<button id="submit" class="btn btn-lg">Submit</button>
+					</form>
+					<div id="form-response"></div>
+					  
+					<br/>
+					</div>  
+				</div>
 			</div>
-
-		<!-- Footer -->
-			<div id="footer">
-
-				<!-- Copyright -->
-					<ul class="copyright">
-						<li>&copy; Leading Edge Sailing. All rights reserved. 2023</li>
-					</ul>
-
+			
+			<div class="flex-w">
+				<!---<a href="https://www.instagram.com/jprefer/" class="size3 flex-c-m how-social trans-04 m-r-15 m-b-10">
+					<i class="fa fa-instagram"></i>--->
+				</a>
+				<!---<a href="https://www.linkedin.com/in/jprefer/" class="size3 flex-c-m how-social trans-04 m-r-15 m-b-10">
+					<i class="fa fa-linkedin"></i>--->
+				</a>
+				<!---<a href="https://www.facebook.com/jprefer" class="size3 flex-c-m how-social trans-04 m-r-15 m-b-10">
+					<i class="fa fa-facebook"></i>--->
+				</a>
+				<!---<a href="https://twitter.com/jprefer" class="size3 flex-c-m how-social trans-04 m-r-15 m-b-10">
+					<i class="fa fa-twitter"></i>--->
+				</a>
 			</div>
+		</div>
+			
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+		<div class="wsize1 simpleslide100-parent respon2">
+			<!--  -->
+			<div class="simpleslide100">
+				<div class="simpleslide100-item bg-img1" style="background-image: url('images/bg01.jpg');"></div>
+				<div class="simpleslide100-item bg-img1" style="background-image: url('images/bg02.jpg');"></div>
+				<div class="simpleslide100-item bg-img1" style="background-image: url('images/bg03.jpg');"></div>
+			</div>
+		</div>
+	</div>
 
-	</body>
+
+
+	
+
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/tilt/tilt.jquery.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
 </html>
